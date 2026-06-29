@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>너드콘 4화 정리</title>
+  <meta name="description" content="너드콘 4화 행사 정보와 세션 메모를 정리한 공개용 문서">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F6F4E'/%3E%3Cpath d='M9 22V10h3l8 8v-8h3v12h-3l-8-8v8H9z' fill='%23F6F7F4'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --surface-primary: #F6F7F4;
+      --surface-secondary: #FFFFFF;
+      --surface-elevated: #EEF1EA;
+      --text-primary: #151813;
+      --text-secondary: #536055;
+      --text-tertiary: #7D887B;
+      --border-default: #D8DED3;
+      --border-subtle: #E8ECE3;
+      --accent-primary: #2F6F4E;
+      --accent-hover: #24573D;
+      --status-info: #355C7D;
+      --status-warning: #91650D;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--surface-primary);
+      color: var(--text-primary);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--accent-primary);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent-primary) 35%, transparent);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: var(--space-10) 0 var(--space-16);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: var(--space-8);
+      align-items: end;
+      padding: var(--space-12) 0 var(--space-10);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: var(--space-3);
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 880px;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 750;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 720;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 680;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      margin-top: var(--space-4);
+      max-width: 68ch;
+      color: var(--text-secondary);
+      font-size: 18px;
+    }
+
+    .meta-panel {
+      border: 1px solid var(--border-default);
+      background: var(--surface-secondary);
+      padding: var(--space-6);
+      border-radius: 8px;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: var(--space-3);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta-list strong {
+      display: block;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .section {
+      padding: var(--space-12) 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--space-4);
+    }
+
+    .card {
+      grid-column: span 4;
+      min-width: 0;
+      border: 1px solid var(--border-default);
+      background: var(--surface-secondary);
+      border-radius: 8px;
+      padding: var(--space-6);
+    }
+
+    .card.wide {
+      grid-column: span 6;
+    }
+
+    .card.full {
+      grid-column: 1 / -1;
+    }
+
+    .card p,
+    .card li {
+      color: var(--text-secondary);
+    }
+
+    .links {
+      display: grid;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .links a {
+      word-break: break-word;
+    }
+
+    .timeline {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--border-default);
+      background: var(--surface-secondary);
+      border-radius: 8px;
+    }
+
+    .timeline th,
+    .timeline td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .timeline th {
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .timeline tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .session-list {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    details.session {
+      border: 1px solid var(--border-default);
+      background: var(--surface-secondary);
+      border-radius: 8px;
+      padding: 0;
+    }
+
+    details.session[open] {
+      background: #FBFCF8;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: var(--space-6);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: var(--space-4);
+      align-items: baseline;
+    }
+
+    .session-num {
+      color: var(--accent-primary);
+      font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .session-body {
+      display: grid;
+      gap: var(--space-4);
+      padding: 0 var(--space-6) var(--space-6) calc(88px + var(--space-10));
+    }
+
+    ul {
+      margin: 0;
+      padding-left: var(--space-6);
+    }
+
+    li + li {
+      margin-top: var(--space-2);
+    }
+
+    .callout {
+      border: 1px solid var(--border-default);
+      background: var(--surface-elevated);
+      border-radius: 8px;
+      padding: var(--space-6);
+    }
+
+    .tool-note {
+      border-left: 4px solid var(--status-info);
+    }
+
+    .warning-note {
+      border-left: 4px solid var(--status-warning);
+    }
+
+    footer {
+      margin-top: var(--space-16);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border-default);
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .card,
+      .card.wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 24px, 1180px);
+        padding-top: var(--space-6);
+      }
+
+      .hero {
+        padding-top: var(--space-8);
+      }
+
+      .timeline {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .summary-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+
+      .session-body {
+        padding: 0 var(--space-6) var(--space-6);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <span class="label">NerdCon 4 archive</span>
+        <h1>너드콘 4화 공개 정리</h1>
+        <p class="lead">공식 링크와 현장 세션 메모를 합쳐 다시 읽기 쉬운 형태로 정리했습니다. 공개에 필요한 정보만 남겼습니다.</p>
+      </div>
+      <aside class="meta-panel" aria-label="행사 핵심 정보">
+        <ul class="meta-list">
+          <li><strong>일시</strong>2026. 06. 27 토요일 14:00-18:00</li>
+          <li><strong>장소</strong>천안아산역 호서대 KTX 캠퍼스 203호</li>
+          <li><strong>형식</strong>오프라인 세션, Q&A, 네트워킹</li>
+          <li><strong>주제</strong>AI 시대 개발자 취업과 실전 에이전트 운영</li>
+        </ul>
+      </aside>
+    </header>
+
+    <section class="section" id="links">
+      <div class="section-head">
+        <span class="label">Links</span>
+        <h2>확인한 링크</h2>
+      </div>
+      <div class="grid">
+        <article class="card wide">
+          <h3>공식 아카이브</h3>
+          <p>행사 일정과 세션 정보를 확인할 수 있는 공식 아카이브입니다.</p>
+          <div class="links">
+            <a href="https://nerd.aviss.kr/archive/4">https://nerd.aviss.kr/archive/4</a>
+          </div>
+        </article>
+        <article class="card wide">
+          <h3>기존 너드콘 도메인</h3>
+          <p>기존 도메인은 2025 기록을 보관하고, 현재 활동은 nerd.aviss.kr에서 이어진다고 안내합니다.</p>
+          <div class="links">
+            <a href="http://nerdcon.kr/">http://nerdcon.kr/</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="email">
+      <div class="section-head">
+        <span class="label">Event brief</span>
+        <h2>행사 정보</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>모집 안내</h3>
+          <p>2026년 5월 초 모집 안내를 통해 행사 주제와 무료 참가 정보를 확인했습니다.</p>
+        </article>
+        <article class="card">
+          <h3>참가 안내</h3>
+          <p>2026년 6월 초 참가 안내를 통해 장소, 시간, 준비 권장을 확인했습니다.</p>
+        </article>
+        <article class="card full">
+          <h3>공식 아카이브</h3>
+          <p>행사 직전 공식 아카이브에서 세션 순서와 발표 주제를 다시 확인했습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="section-head">
+        <span class="label">Schedule</span>
+        <h2>세션 일정</h2>
+      </div>
+      <table class="timeline">
+        <thead>
+          <tr>
+            <th>시간</th>
+            <th>세션</th>
+            <th>제목</th>
+            <th>발표</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>14:00-14:10</td><td>0</td><td>성공적인 취업준비하기</td><td>백석대학교 대학일자리플러스센터</td></tr>
+          <tr><td>14:10-14:35</td><td>1</td><td>AI가 다 해주네, 그럼 난 뭐해</td><td>김지훈</td></tr>
+          <tr><td>14:35-14:50</td><td>2</td><td>DEEPDIVE: 하네스엔지니어링</td><td>주홍철</td></tr>
+          <tr><td>14:50-15:15</td><td>3</td><td>요약 에이전트 솔론봇, 2년 동안 운영한 썰</td><td>홍성민</td></tr>
+          <tr><td>15:15-15:25</td><td>휴식</td><td>쉬는 시간</td><td></td></tr>
+          <tr><td>15:25-15:50</td><td>4</td><td>러닝 머신이 아니라 머신 러닝이 다이어트에 미치는 영향</td><td>박해선</td></tr>
+          <tr><td>15:50-16:15</td><td>5</td><td>RAG는 처음이라: 백엔드 개발자의 LLM 적응기</td><td>조영상</td></tr>
+          <tr><td>16:15-16:40</td><td>6</td><td>AI 시대를 여행하는 PM을 위한 안내서</td><td>박종훈</td></tr>
+          <tr><td>16:40-16:50</td><td>Q&A</td><td>발표자 Q&A</td><td>발표자</td></tr>
+          <tr><td>16:55-18:00</td><td>네트워킹</td><td>명함 교환 및 인맥 구축</td><td>참가자</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="notes">
+      <div class="section-head">
+        <span class="label">Session notes</span>
+        <h2>세션별 읽기 노트</h2>
+      </div>
+      <div class="session-list">
+        <details class="session" open>
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 0</span>
+              <h3>성공적인 취업 준비</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>대학일자리플러스센터는 청년 특화 고용 서비스 사업이다.</li>
+              <li>고용24에서 대학일자리플러스센터를 검색해 찾을 수 있다.</li>
+              <li>백석대학교 BEST를 통해 비대면 서비스도 확인할 수 있다.</li>
+              <li>챙길 정책: 국민취업지원제도, 미래내일 일경험, 국민내일배움카드.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="session" open>
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 1</span>
+              <h3>AI가 다 해주네, 그럼 난 뭐해</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>개발자는 만드는 사람에서 맡기고 검토하는 사람으로 역할이 바뀌고 있다.</li>
+              <li>AI에게 맡기면 안 되는 일: 채용 최종 결정, 성과 피드백, 아키텍처, 보안 정책, 제품 방향.</li>
+              <li>AI는 추상화다. 장애 상황에서는 구조, 라이브러리 선택 이유, 기본기를 알아야 복구할 수 있다.</li>
+              <li>결론은 위임 판단과 기본기다. 맡길 것은 맡기되 남는 시간에 위임할 수 없는 판단을 해야 한다.</li>
+            </ul>
+            <p><strong>질문 메모:</strong> AI로 만든 코드를 인수인계할 때 이해도를 어떻게 보장할지, 레거시 정보가 사라지는 상황에서 어떻게 수정할지.</p>
+          </div>
+        </details>
+
+        <details class="session">
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 2</span>
+              <h3>DEEPDIVE: 하네스엔지니어링</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>코드는 test, lint, build, QA까지 확인되어야 한다.</li>
+              <li>AI와 개발할 때 가장 중요한 것은 모호성을 줄이는 일이다.</li>
+              <li>여러 목표를 이어갈 때는 `ultragoal`, 이슈를 작게 쪼갤 때는 Ralph를 쓰는 흐름이 언급됐다.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="session">
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 3</span>
+              <h3>요약 에이전트 솔론봇, 2년 동안 운영한 썰</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>가설을 세우면 실패도 데이터가 된다.</li>
+              <li>사이드 프로젝트를 만들기 전 "누구에게", "어디에서" 보일지 먼저 정해야 한다.</li>
+              <li>흥미성 기능은 사용률이 빠르게 떨어지고, 정보성 기능이 더 오래 간다.</li>
+              <li>실패한 기능은 홍보 부족보다 트리거, 사용자 맥락, 도배 위험 때문에 실패할 수 있다.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="session">
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 4</span>
+              <h3>러닝 머신이 아니라 머신 러닝이 다이어트에 미치는 영향</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>브로카 공식처럼 단순한 경험식에서 BMI와 머신러닝 기초 설명으로 이어졌다.</li>
+              <li>언어모델 결과는 토큰 샘플링 방식에 따라 달라진다.</li>
+              <li>현재의 인공 신경망은 인간 뇌를 그대로 복제한 구조라기보다 수학적 방식으로 문제를 푸는 구조에 가깝다.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="session" open>
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 5</span>
+              <h3>RAG는 처음이라: 백엔드 개발자의 LLM 적응기</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>문의 게시판 답변에서 답변 작성보다 근거 탐색에 더 많은 시간이 든다는 문제가 출발점이었다.</li>
+              <li>기본 흐름은 문서, 청킹, 임베딩, Vector DB, 검색, 컨텍스트, LLM 답변이다.</li>
+              <li>중복 문서를 묶고 최신 또는 최장 데이터를 남기는 방식으로 참고 자료를 개선했다.</li>
+              <li>문서 타입별 검색 할당량을 두어 대화형 데이터와 공식 문서 데이터의 다양성을 확보했다.</li>
+              <li>6가지 기준으로 자동 채점하는 평가 시스템과 골든 데이터셋을 구축했다.</li>
+              <li>핵심 결론: 모델보다 데이터 파이프라인과 평가 체계가 중요하다.</li>
+            </ul>
+            <p><strong>개인 질문 후보:</strong> 내 LLM Wiki에는 문서 타입별 할당량을 어떻게 적용할 수 있을까?</p>
+          </div>
+        </details>
+
+        <details class="session" open>
+          <summary>
+            <div class="summary-row">
+              <span class="session-num">Session 6</span>
+              <h3>AI 시대를 여행하는 PM을 위한 안내서</h3>
+            </div>
+          </summary>
+          <div class="session-body">
+            <ul>
+              <li>좋은 모델 자체가 목표는 아니다. 단 한 명의 end user 요구 하나를 잡아야 한다.</li>
+              <li>테스트 항목을 읽으면 서비스 요구사항이 전부 파악되어야 한다.</li>
+              <li>AI가 필요한 지식을 얻도록 목표에 맞는 지식과 도구를 넣어줘야 한다.</li>
+              <li>AI 서비스는 rubric, trajectory, observability를 확보해야 한다.</li>
+              <li>프로젝트는 목표를 잊지 않고 적당한 선에서 멈추는 감각이 중요하다.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="follow-up">
+      <div class="section-head">
+        <span class="label">Follow-up</span>
+        <h2>내 후속 정리 포인트</h2>
+      </div>
+      <div class="grid">
+        <article class="card wide">
+          <h3>위임하지 않을 판단 목록</h3>
+          <p>AI로 작업할 때도 제품 방향, 보안 정책, 아키텍처 선택, 최종 품질 판단은 직접 기준을 잡아야 한다.</p>
+        </article>
+        <article class="card wide">
+          <h3>RAG 개선 실험</h3>
+          <p>내 지식검색에는 중복 문서 정리, 최신 문서 우선, 문서 타입별 할당량, 골든 질문셋을 작은 실험으로 붙일 수 있다.</p>
+        </article>
+        <article class="card wide">
+          <h3>프로젝트 목표 축소</h3>
+          <p>각 포트폴리오 프로젝트를 단 한 명의 사용자와 요구 하나로 다시 써보면 범위가 선명해진다.</p>
+        </article>
+        <article class="card wide">
+          <h3>실패 데이터화</h3>
+          <p>기능을 만들기 전 "누가", "어디서", "어떤 트리거로" 쓸지 적어두면 실패 후 원인을 분석할 수 있다.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>Public notes from NerdCon 4, prepared for GitHub Pages.</p>
+    </footer>
+  </main>
+</body>
+</html>
