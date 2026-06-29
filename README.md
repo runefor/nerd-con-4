@@ -14,7 +14,4 @@
 
 - 공식 아카이브: https://nerd.aviss.kr/archive/4
 - 기존 너드콘 도메인: http://nerdcon.kr/
-
-## 메모
-
-개인 연락처, 내부 작업 로그, 로컬 파일 경로는 공개 저장소에 포함하지 않았습니다.
+- 작성 후기: https://my-killing-time.tistory.com/26
